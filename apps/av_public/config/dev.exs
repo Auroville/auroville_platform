@@ -41,6 +41,11 @@ config :av_public, AVPublicWeb.Endpoint,
     ]
   ]
 
+config :av_public, AurovilleAccount,
+  client_id: "20aed33696b2df31954632f52c5a785f4105d11353d6627a851fde15d03b4515",
+  client_secret: "17016c02bfb5dd1c5f3f8811747c0a6821c62787645dab2ba79c650057d533f5",
+  redirect_uri: "http://localhost:4002/oauth/auroville_account/callback"
+
 # Do not include metadata nor timestamps in development logs
 config :logger, :console, format: "[$level] $message\n"
 
