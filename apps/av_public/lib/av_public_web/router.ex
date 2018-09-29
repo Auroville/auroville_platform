@@ -1,5 +1,5 @@
-defmodule AvPublicWeb.Router do
-  use AvPublicWeb, :router
+defmodule AVPublicWeb.Router do
+  use AVPublicWeb, :router
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -13,14 +13,14 @@ defmodule AvPublicWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", AvPublicWeb do
+  scope "/kinisi", AVPublicWeb.Kinisi do
     pipe_through :browser # Use the default browser stack
 
-    get "/", PageController, :index
+    get "/", SearchController, :index
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", AvPublicWeb do
+  # scope "/api", AVPublicWeb do
   #   pipe_through :api
   # end
 end
