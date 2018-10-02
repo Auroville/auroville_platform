@@ -1,7 +1,7 @@
 use Mix.Config
 
 # Configure your database
-config :kinisi, AVDataStore.Repo,
+config :av_data_store, AVDataStore.Repo,
   adapter: Ecto.Adapters.Postgres,
   username: "postgres",
   password: "postgres",

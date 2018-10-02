@@ -3,7 +3,7 @@ defmodule AVDataStore.Mixfile do
 
   def project do
     [
-      app: :kinisi,
+      app: :av_data_store,
       version: "0.0.1",
       build_path: "../../_build",
       config_path: "../../config/config.exs",

@@ -1,5 +1,5 @@
 defmodule AVDataStore.Repo do
-  use Ecto.Repo, otp_app: :kinisi
+  use Ecto.Repo, otp_app: :av_data_store
 
   @doc """
   Dynamically loads the repository url from the
