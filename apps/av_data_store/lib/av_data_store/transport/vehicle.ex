@@ -8,7 +8,7 @@ defmodule AVPublic.Transport.Vehicle do
     name: Name of the vehicle
     type: Vehicle type such as Car, Cycle, Bike etc.,
   """
-
+  
   schema "transport_vehicles" do
     field :description, :string
     field :name, :string

@@ -1,7 +1,11 @@
-defmodule AvDataStore.Transport.Cycle_tariff do
+defmodule AvDataStore.Transport.CycleTariff do
   use Ecto.Schema
   import Ecto.Changeset
 
+  @moduledoc """
+    Provides cycle tariff for calculating cost depending on status and duration.
+
+  """
 
   schema "transport_cycle_tariffs" do
     field :duration, :integer

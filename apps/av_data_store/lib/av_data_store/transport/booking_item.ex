@@ -1,9 +1,13 @@
-defmodule AvDataStore.Transport.Booking_item do
+defmodule AvDataStore.Transport.BookingItem do
   use Ecto.Schema
   import Ecto.Changeset
 
+    @moduledoc """
+      Contains details of each booking item.
 
-  schema "transport_booking_items" do
+    """
+
+    schema "transport_booking_items" do
     field :amount_paid, :decimal
     field :booking_id, :integer
     field :booking_status, :string

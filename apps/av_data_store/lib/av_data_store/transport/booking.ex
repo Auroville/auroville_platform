@@ -2,10 +2,14 @@ defmodule AvDataStore.Transport.Booking do
   use Ecto.Schema
   import Ecto.Changeset
 
+    @moduledoc """
+      Contains a unique booking id mapped to the booking item and customer
 
-  schema "trasnport_bookings" do
+    """
+
+    schema "trasnport_bookings" do
     field :booking_id, :integer
-    field :user_id, :integer
+    field :customer_id, :integer
 
     timestamps()
   end
