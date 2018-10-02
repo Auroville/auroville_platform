@@ -20,6 +20,11 @@ defmodule AVPublicWeb.Router do
     get "/", PageController, :index
     get "/oauth/:provider", AuthController, :index
     get "/oauth/:provider/callback", AuthController, :callback
+
+    scope "/transport", Transport do
+      get "/", SearchController, :index
+    end
+
   end
 
   scope "/", AVPublicWeb do
