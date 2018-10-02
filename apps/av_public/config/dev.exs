@@ -7,7 +7,7 @@ use Mix.Config
 # watchers to your application. For example, we use it
 # with brunch.io to recompile .js and .css sources.
 config :av_public, AVPublicWeb.Endpoint,
-  http: [port: 4000],
+  http: [port: 4002],
   debug_errors: true,
   code_reloader: true,
   check_origin: false,
@@ -40,6 +40,11 @@ config :av_public, AVPublicWeb.Endpoint,
       ~r{lib/av_public_web/templates/.*(eex)$}
     ]
   ]
+
+config :av_public, AurovilleAccount,
+  client_id: "20aed33696b2df31954632f52c5a785f4105d11353d6627a851fde15d03b4515",
+  client_secret: "17016c02bfb5dd1c5f3f8811747c0a6821c62787645dab2ba79c650057d533f5",
+  redirect_uri: "http://localhost:4002/oauth/auroville_account/callback"
 
 # Do not include metadata nor timestamps in development logs
 config :logger, :console, format: "[$level] $message\n"

@@ -1,10 +1,10 @@
 use Mix.Config
 
 # Configure your database
-config :kinisi, Kinisi.Repo,
+config :av_data_store, AVDataStore.Repo,
   adapter: Ecto.Adapters.Postgres,
   username: "postgres",
   password: "postgres",
-  database: "kinisi_dev",
+  database: "av_data_store_test",
   hostname: "localhost",
-  pool_size: 10
+  pool: Ecto.Adapters.SQL.Sandbox

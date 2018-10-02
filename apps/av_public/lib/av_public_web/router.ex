@@ -7,20 +7,37 @@ defmodule AVPublicWeb.Router do
     plug :fetch_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug :assign_current_user
   end
 
   pipeline :api do
     plug :accepts, ["json"]
   end
 
-  scope "/kinisi", AVPublicWeb.Kinisi do
+  scope "/", AVPublicWeb do
     pipe_through :browser # Use the default browser stack
 
-    get "/", SearchController, :index
+    get "/", PageController, :index
+    get "/oauth/:provider", AuthController, :index
+    get "/oauth/:provider/callback", AuthController, :callback
+
+    scope "/transport", Transport do
+      get "/", SearchController, :index
+    end
+
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", AVPublicWeb do
-  #   pipe_through :api
-  # end
+  scope "/", AVPublicWeb do
+    pipe_through [:browser, AVPublicWeb.RequireAuthPlug]
+
+    delete "/logout", AuthController, :delete
+  end
+
+  # Fetch the current user from the session and add it to `conn.assigns`. This
+  # will allow you to have access to the current user in your views with
+  # `@current_user`.
+  defp assign_current_user(conn, _) do
+    assign(conn, :current_user, get_session(conn, :current_user))
+  end
+
 end

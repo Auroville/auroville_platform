@@ -1,9 +1,9 @@
-defmodule Kinisi.Mixfile do
+defmodule AVDataStore.Mixfile do
   use Mix.Project
 
   def project do
     [
-      app: :kinisi,
+      app: :av_data_store,
       version: "0.0.1",
       build_path: "../../_build",
       config_path: "../../config/config.exs",
@@ -22,7 +22,7 @@ defmodule Kinisi.Mixfile do
   # Type `mix help compile.app` for more information.
   def application do
     [
-      mod: {Kinisi.Application, []},
+      mod: {AVDataStore.Application, []},
       extra_applications: [:logger, :runtime_tools]
     ]
   end

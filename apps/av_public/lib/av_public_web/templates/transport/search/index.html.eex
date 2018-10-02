@@ -1,0 +1,11 @@
+<%= form_for @conn, search_path(@conn, :index), [method: :get], fn f -> %>
+  <label>
+    From: <%= date_input f, :fromdate %>
+  </label>
+
+  <label>
+    To: <%= date_input f, :todate %>
+  </label>
+
+  <%= submit "Search" %>
+<% end %>

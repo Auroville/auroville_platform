@@ -1,27 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
 
-    <title>Hello AVPublic!</title>
-    <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
-  </head>
+  <title>Hello AVPublic!</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
+</head>
 
-  <body>
+<body>
+  <nav style="padding: 0;" class="navbar navbar-expand-sm navbar-light">
     <div class="container">
-      <header class="header">
-        <nav role="navigation">
-          <ul class="nav nav-pills pull-right">
-            <li><a href="http://www.phoenixframework.org/docs">Get Started</a></li>
-          </ul>
-        </nav>
-        <span class="logo"></span>
-      </header>
+      <div class="navbar-nav ml-auto" style="font-size: .75rem;">
+        <a href="#" class="nav-item nav-link" style="padding-top: 0; padding-bottom: 0" data-toggle="modal" data-target="#exampleModal">
+          Language - En
+        </a>
+        <%= if @current_user do %>
+        <%= link "Logout", to: auth_path(@conn, :delete), method: :delete, style: "padding-top: 0; padding-bottom: 0", class: "nav-item nav-link" %>
+        <% else %>
+        <a class="nav-item nav-link"  style="padding-top: 0; padding-bottom: 0" href="<%= auth_path @conn, :index, "auroville_account" %>">Sign in with Auroville Account</a>
+        <% end %>
+      </div>
+    </div>
+  </nav>
+  <nav class="navbar navbar-expand-lg navbar-light bg-white">
+    <div class="container">
+      <a class="navbar-brand mr-5" href="/">
+        <img src="https://assets.auroville.org/images/av-logo-blue.png" alt="" style="height: 24px">
+        Auroville
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <div class="navbar-nav mr-auto">
 
+        </div>
+        <div class="navbar-nav">
+          <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+          <a class="nav-item nav-link" href="#">Vision</a>
+          <a class="nav-item nav-link" href="#">Community</a>
+          <a class="nav-item nav-link" href="#">Activities</a>
+          <a class="nav-item nav-link" href="#">What you can do</a>
+          <a class="nav-item nav-link" href="#">Experience</a>
+          <a class="nav-item nav-link" href="#">Donate <span class="sr-only">(current)</span></a>
+          <!-- Button trigger modal -->
+          <%= render "language-switcher.html" %>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #dc3545;">
+    <div class="container">
+      <span class="navbar-text mr-3">
+        <strong>Experience Auroville</strong>
+        </span>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav mr-auto">
+            <a class="nav-item nav-link active" href="#">Events <span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link active" href="#">Transport <span class="sr-only">(current)</span></a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
       <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
 
@@ -30,6 +80,9 @@
       </main>
 
     </div> <!-- /container -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
   </body>
-</html>
+  </html>
