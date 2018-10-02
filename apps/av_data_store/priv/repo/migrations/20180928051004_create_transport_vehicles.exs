@@ -1,13 +1,12 @@
-defmodule AVPublic.Repo.Migrations.CreateVehicles do
+defmodule AVPublic.Repo.Migrations.CreateTransportVehicles do
   use Ecto.Migration
 
   def change do
-    create table(:vehicles) do
+    create table(:transport_vehicles) do
       add :name, :string
-      add :type, {:array, :string}
+      add :type, :string
       add :picture, :string
       add :description, :string
-      add :price, {:array, :decimal}
 
       timestamps()
     end

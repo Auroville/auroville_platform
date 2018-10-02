@@ -1,4 +1,4 @@
-defmodule AVPublicWeb.Kinisi.SearchController do
+defmodule AVPublicWeb.Transport.SearchController do
   use AVPublicWeb, :controller
 
   def index(conn, _params) do

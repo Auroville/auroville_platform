@@ -1,4 +1,4 @@
-defmodule Kinisi.Repo do
+defmodule AVDataStore.Repo do
   use Ecto.Repo, otp_app: :kinisi
 
   @doc """

@@ -21,11 +21,10 @@ defmodule AVPublicWeb.Router do
     get "/oauth/:provider", AuthController, :index
     get "/oauth/:provider/callback", AuthController, :callback
 
-    scope "/kinisi", AVPublicWeb.Kinisi do
-      pipe_through :browser # Use the default browser stack
-
+    scope "/transport", Transport do
       get "/", SearchController, :index
     end
+
   end
 
   scope "/", AVPublicWeb do

@@ -1,3 +1,3 @@
-defmodule AVPublicWeb.Kinisi.SearchView do
+defmodule AVPublicWeb.Transport.SearchView do
   use AVPublicWeb, :view
 end
