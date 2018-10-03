@@ -23,6 +23,7 @@ defmodule AVPublicWeb.Router do
 
     scope "/transport", Transport do
       get "/", SearchController, :index
+      get "/vehicles", SearchController, :show
     end
 
   end

@@ -1,4 +1,4 @@
-defmodule AVPublic.Transport.Vehicle do
+defmodule AVDataStore.Transport.Vehicle do
   use Ecto.Schema
   import Ecto.Changeset
 
