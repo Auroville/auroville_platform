@@ -6,7 +6,7 @@ defmodule AVPublicWeb.Transport.SearchController do
 
   def index(conn, %{"search" => search_params}) do
     vehicles = Transport.list_vehicles
-    render conn, "index.html", vehicles: vehicles 
+    render conn, "index.html", vehicles: vehicles
   end
 
   def index(conn, _params) do
