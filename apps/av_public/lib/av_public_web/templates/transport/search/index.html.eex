@@ -1,11 +1,32 @@
-<%= form_for @conn, search_path(@conn, :index), [method: :get], fn f -> %>
-  <label>
-    From: <%= date_input f, :fromdate %>
-  </label>
+<div class="container">
+  <div class="section text-center">
+    <div class="row">
+      <div class="col-md-8 ml-auto mr-auto">
+          <h2 class="title">Book a Cycle</h2>
+          <%= form_for @conn, transport_search_path(@conn, :index), [as: :search, method: :get], fn f -> %>
+            <label>
+              From: <%= date_input f, :from_date, required: true  %>
+            </label>
 
-  <label>
-    To: <%= date_input f, :todate %>
-  </label>
+            <label>
+              To: <%= date_input f, :to_date, required: true  %>
+            </label>
 
-  <%= submit "Search" %>
-<% end %>
+            <p>
+              <div class="btn btn-primary">
+                <%= submit "Search" %>
+              </div>
+            </p>
+
+          <% end %>
+
+          <%= if @vehicles do %>
+            <%= render "_results.html", assigns %>
+          <% end %>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

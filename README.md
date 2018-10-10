@@ -33,4 +33,4 @@ maintain the code as in microservices.
 
 `/apps/av_public` - Phoenix app that will power the next version of auroville.org
 
-`/apps/kinisi` - Ecto app that manages the business data and rules for booking rentable cycles.
+`/apps/av_data_store` - Ecto app that manages the business data and rules for booking rentable cycles.

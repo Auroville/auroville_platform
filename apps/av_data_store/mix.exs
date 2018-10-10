@@ -3,7 +3,7 @@ defmodule AVDataStore.Mixfile do
 
   def project do
     [
-      app: :kinisi,
+      app: :av_data_store,
       version: "0.0.1",
       build_path: "../../_build",
       config_path: "../../config/config.exs",
@@ -28,7 +28,7 @@ defmodule AVDataStore.Mixfile do
   end
 
   # Specifies which paths to compile per environment.
-  defp elixirc_paths(:test), do: ["lib", "test/support"]
+  defp elixirc_paths(:test), do: ["lib", "test/support", "test/factories"]
   defp elixirc_paths(_),     do: ["lib"]
 
   # Specifies your project dependencies.
@@ -37,6 +37,7 @@ defmodule AVDataStore.Mixfile do
   defp deps do
     [
       {:postgrex, ">= 0.0.0"},
+      {:ex_machina, "~> 2.2", only: :test},
       {:ecto, "~> 2.1"}
     ]
   end

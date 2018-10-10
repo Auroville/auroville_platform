@@ -8,6 +8,7 @@ defmodule AVPublicWeb.Router do
     plug :protect_from_forgery
     plug :put_secure_browser_headers
     plug :assign_current_user
+    plug AVPublicWeb.Plugs.FetchCart
   end
 
   pipeline :api do
@@ -21,8 +22,10 @@ defmodule AVPublicWeb.Router do
     get "/oauth/:provider", AuthController, :index
     get "/oauth/:provider/callback", AuthController, :callback
 
-    scope "/transport", Transport do
+    scope "/transport", Transport, as: :transport do
       get "/", SearchController, :index
+      post "/cart", CartController, :add
+      get "/cart", CartController, :show
     end
 
   end
