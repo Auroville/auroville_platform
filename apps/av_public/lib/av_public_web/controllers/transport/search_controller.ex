@@ -4,12 +4,13 @@ defmodule AVPublicWeb.Transport.SearchController do
   alias AVDataStore.Transport
   alias AVDataStore.Transport.Vehicle
 
-  def index(conn, _params) do
-    render conn, "index.html"
+  def index(conn, %{"search" => search_params}) do
+    vehicles = Transport.list_vehicles
+    render conn, "index.html", vehicles: vehicles 
   end
 
-  def show(conn, _params) do
-    vehicles = Transport.list_vehicles
-    render conn, "show.html", vehicles: vehicles
+  def index(conn, _params) do
+    render conn, "index.html", vehicles: nil
   end
+
 end

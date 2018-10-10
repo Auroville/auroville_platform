@@ -1,7 +1,7 @@
 defmodule AVDataStore.TransportVehicleFactory do
   defmacro __using__(_opts) do
     quote do
-      def transport_vehicle_valid_factory do
+      def transport_cycle_factory do
         %AVDataStore.Transport.Vehicle{
           name: sequence(:name, &"Cycle #{&1}"),
           description: sequence(:description, &"Description #{&1}"),

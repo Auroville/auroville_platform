@@ -9,5 +9,10 @@ defmodule AVDataStore.Transport do
     Vehicle
     |> Repo.all
   end
-  
+
+  def get_vehicle!(id) do
+    Vehicle
+    |> Repo.get!(id)
+  end
+
 end

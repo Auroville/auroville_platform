@@ -17,6 +17,9 @@ config :av_public, AVPublicWeb.Endpoint,
   pubsub: [name: AVPublic.PubSub,
            adapter: Phoenix.PubSub.PG2]
 
+config :av_public, :generators,
+ context_app: :av_data_store
+
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",
