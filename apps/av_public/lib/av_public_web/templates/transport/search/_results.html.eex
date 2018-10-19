@@ -16,7 +16,7 @@
         <!-- <a href="#" class="float-right btn btn-danger">Add to Cart</a> -->
 
 
-        <%= form_for @conn, "/cart", [class: "float-right"], fn f -> %>
+        <%= form_for @conn, "/transport/cart", [class: "float-right"], fn f -> %>
           <%= hidden_input f, :vehicle_name, value: vehicle.name %>
           <%= hidden_input f, :vehicle_id, value: vehicle.id %>
           <%= hidden_input f, :duration, value: 5 %>

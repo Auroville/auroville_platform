@@ -1,14 +1,14 @@
 defmodule AVPublicWeb.Plugs.FetchCart do
   import Plug.Conn
   alias AVDataStore.Sales
-  alias AVDataStore.Sales.Order
+  alias AVDataStore.Sales.Cart
 
   def init(_opts), do: nil
 
   def call(conn, _) do
     with cart_id <- get_session(conn, :cart_id),
      true <- is_integer(cart_id),
-     %Order{} = cart <- Sales.get_cart(cart_id)
+     %Cart{} = cart <- Sales.get_cart(cart_id)
      do
        conn
        |> assign(:cart, cart)

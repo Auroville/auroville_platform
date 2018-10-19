@@ -1,4 +1,4 @@
-defmodule AVPublic.Repo.Migrations.CreateTransportVehicles do
+defmodule AVDataStore.Repo.Migrations.CreateTransportVehicles do
   use Ecto.Migration
 
   def change do

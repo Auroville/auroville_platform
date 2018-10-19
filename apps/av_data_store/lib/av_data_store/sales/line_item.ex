@@ -36,9 +36,8 @@ defmodule AVDataStore.Sales.LineItem do
 
   defp set_total(changeset) do
     quantity = get_field(changeset, :quantity) |> Decimal.new
-    duration = get_field(changeset, :duration) |> Decimal.new
-    unit_price = get_field(changeset, :unit_price)
+    unit_price = get_field(changeset, :unit_price) 
     changeset
-    |> put_change(:total, Decimal.mult(unit_price, quantity, duration))
+    |> put_change(:total, Decimal.mult(unit_price, quantity))
   end
 end

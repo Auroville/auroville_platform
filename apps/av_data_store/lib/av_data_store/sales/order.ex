@@ -7,7 +7,20 @@ defmodule AVDataStore.Sales.Order do
   schema "sales_orders" do
     embeds_many :line_items, LineItem, on_replace: :delete
     field :status, :string
+    field :from_date, :date
+    field :to_date, :date
+    field :subtotal, :decimal
+    field :tax_cgst, :decimal
+    field :tax_sgst, :decimal
     field :total, :decimal
+    field :customer_id, :integer
+    field :name, :string
+    field :email, :string
+    field :uuid, :string
+    field :id_type, :string
+    field :id_value, :string
+    field :contact_number, :string
+    field :user_status, :string
 
     timestamps()
   end

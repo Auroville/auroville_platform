@@ -11,12 +11,12 @@
     <tbody>
       <%= for item <- @cart.line_items do %>
         <tr>
-          <td><%= item.vehicle_name %></td> <td><%= item.pack_size %></td> <td><%= item.quantity %></td> <td>INR <%= item.unit_price %></td> <td>INR <%= item.total %></td>
+          <td><%= item.vehicle_name %></td> <td><%= item.duration %></td> <td><%= item.quantity %></td> <td>INR <%= inspect item.unit_price %></td> <td>INR <%=inspect item.total %></td>
         </tr>
       <% end %>
       <tr>
         <td colspan=4>Order Total</td>
-        <td>INR <%= @cart.total %></td>
+        <td>INR <%=inspect @cart.total %></td>
       </tr>
     </tbody>
   </table>

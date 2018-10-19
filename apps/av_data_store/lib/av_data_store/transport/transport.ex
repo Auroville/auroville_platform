@@ -5,7 +5,7 @@ defmodule AVDataStore.Transport do
 
   import Ecto.Changeset
 
-  def list_vehicles do
+  def get_available_vehicles do
     Vehicle
     |> Repo.all
   end
