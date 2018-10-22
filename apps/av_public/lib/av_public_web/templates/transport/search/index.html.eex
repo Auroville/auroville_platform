@@ -1,8 +1,15 @@
-<div class="container">
-  <div class="section text-center">
+<div class="container-fluid">
+  <div class="section section-basic text-center">
     <div class="row">
-      <div class="col-md-8 ml-auto mr-auto">
-          <h2 class="title">Book a Cycle</h2>
+      <div class="col-md-12 ml-auto mr-auto">
+          <h2 class="bd-title">Book a Cycle</h2>
+
+          <!--
+          <div class="form-group">
+              <label class="label-control">Date Picker</label>
+              <input type="text" class="form-control datepicker" value="10/10/2016">
+          </div> -->
+
           <%= form_for @conn, transport_search_path(@conn, :index), [as: :search, method: :get], fn f -> %>
             <label>
               From: <%= date_input f, :from_date, required: true  %>
@@ -13,8 +20,8 @@
             </label>
 
             <p>
-              <div class="btn btn-primary">
-                <%= submit "Search" %>
+              <div>
+                <%= submit "Search", class: "btn btn-primary" %>
               </div>
             </p>
 
@@ -30,3 +37,12 @@
   </div>
 
 </div>
+
+<script>
+  $(document).ready(function() {
+
+      //init DateTimePickers
+      materialKit.initFormExtendedDatetimepickers();
+
+  });
+</script>
