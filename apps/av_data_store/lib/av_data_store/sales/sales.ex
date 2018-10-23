@@ -1,7 +1,6 @@
 defmodule AVDataStore.Sales do
   alias AVDataStore.Repo
-  alias AVDataStore.Sales.Order
-  alias AVDataStore.Sales.Cart
+  alias AVDataStore.Sales.{Order, Cart, LineItem}
 
   def get_cart(cart_id) do
     Cart
@@ -48,7 +47,12 @@ defmodule AVDataStore.Sales do
   end
 
   def add_to_cart(%Cart{line_items: []} = cart, cart_params) do
-    attrs = %{line_items: [cart_params]}
+    new_item = %{
+      vehicle_id: String.to_integer(cart_params["vehicle_id"]),
+      quantity: String.to_integer(cart_params["quantity"]),
+      duration: 5
+    }
+    attrs = %{line_items: [new_item]}
     update_cart(cart, attrs)
   end
 
@@ -58,12 +62,22 @@ defmodule AVDataStore.Sales do
       quantity: String.to_integer(cart_params["quantity"]),
       duration: 5 }
       existing_line_items = existing_line_items |> Enum.map(&Map .from_struct/1)
-      Enum.filter(existing_line_items, fn x ->
-        case x.vehicle_id == new_item.vehicle_id do
-          
-        end
+      copy_existing_line_items = existing_line_items
+      existing_line_items
+      |> Enum.map(fn %LineItem{quantity: quantity} = x ->
+         cond do
+           x.vehicle_id == new_item.vehicle_id ->
+             Map.put(LineItem, :quantity, (quantity + new_item.quantity))
+           true ->
+             x
+       end
       end)
-      attrs = %{line_items: [new_item | existing_line_items]}
+      cond do
+        existing_line_items == copy_existing_line_items ->
+          attrs = %{line_items: [new_item | existing_line_items]}
+        true ->
+          attrs = %{line_items: [existing_line_items]}
+      end
       update_cart(cart, attrs)
   end
 
