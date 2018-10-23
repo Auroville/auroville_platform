@@ -58,13 +58,18 @@ defmodule AVDataStore.Sales do
       quantity: String.to_integer(cart_params["quantity"]),
       duration: 5 }
       existing_line_items = existing_line_items |> Enum.map(&Map .from_struct/1)
+      Enum.filter(existing_line_items, fn x ->
+        case x.vehicle_id == new_item.vehicle_id do
+          
+        end
+      end)
       attrs = %{line_items: [new_item | existing_line_items]}
       update_cart(cart, attrs)
   end
 
   def update_cart(cart, attrs) do
     cart
-    |> Order.changeset(attrs)
+    |> Cart.changeset(attrs)
     |> Repo.update
   end
 
