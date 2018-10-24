@@ -7,6 +7,7 @@ defmodule AVDataStore.Repo.Migrations.CreateTransportVehicles do
       add :type, :string
       add :picture, :string
       add :description, :string
+      add :vehicle_id, :integer
 
       timestamps()
     end

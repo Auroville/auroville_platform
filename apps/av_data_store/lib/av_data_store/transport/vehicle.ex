@@ -2,6 +2,8 @@ defmodule AVDataStore.Transport.Vehicle do
   use Ecto.Schema
   import Ecto.Changeset
 
+  alias AVDataStore.Sales.Pricing
+
   @moduledoc """
     Provides Vehicle schema which are rentable entity in the transport context.
 
@@ -14,6 +16,8 @@ defmodule AVDataStore.Transport.Vehicle do
     field :name, :string
     field :picture, :string
     field :type, :string
+    field :vehicle_id, :integer
+    has_many :prices, Pricing
 
     timestamps()
   end
