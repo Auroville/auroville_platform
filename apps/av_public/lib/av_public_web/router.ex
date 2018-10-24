@@ -24,8 +24,8 @@ defmodule AVPublicWeb.Router do
 
     scope "/transport", Transport, as: :transport do
       get "/", SearchController, :index
-      post "/cart", CartController, :add
       get "/cart", CartController, :show
+      post "/cart", CartController, :add
     end
 
   end

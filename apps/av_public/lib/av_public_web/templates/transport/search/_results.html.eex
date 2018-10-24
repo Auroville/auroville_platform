@@ -1,24 +1,40 @@
 <%= if Enum.any?(@vehicles) do %>
-<div class="row  mt-3">
-  <%= for vehicle <- @vehicles do %>
-  <div class="col-md-6">
-    <div class="card">
-      <div class="container">
-        <img class="card-img pl-1 pr-1 pt-1 cover" src="<%= vehicle.picture %>" alt="Card image cap">
-      </div>
-      <div class="card-body">
-        <p class="card-text">
-          <small class="text-muted">Vehicle Type: <%= vehicle.type %></small>
-        </p>
-        <h4 class="card-title"><%= vehicle.name %></h4>
-        <p class="card-text"><%= vehicle.description %></p>
-        <a href="#" class="btn pl-0 pr-0">Check Prices</a>
-        <a href="#" class="float-right btn btn-danger">Add to Cart</a>
+<div class="container">
+  <div class="row  mt-3">
+    <%= for vehicle <- @vehicles do %>
+
+    <div class="col-md-6">
+      <div class="card card-product card-plain">
+        <div class="card-header card-header-image">
+          <img src="<%= vehicle.picture %>" alt="Card image cap">
+          <div class="colored-shadow" style="background-image: "<%= vehicle.picture %>"; opacity: 1;"></div>
+        </div>
+        <div class="card-body text-center">
+          <h6 class="card-category text-info"><%= vehicle.type %></h6>
+          <h3 class="card-title"><%= vehicle.name %></h3>
+          <p class=" card-description"><%= vehicle.description %></p>
+        </div>
+        <div class="card-footer">
+          <div class="price-container">
+              <a href="#" class="btn btn-link btn-rose px-0">Check Price</a>
+          </div>
+          <div class="ml-auto">
+            <%= form_for @conn, "/transport/cart", fn f -> %>
+              <%= hidden_input f, :vehicle_name, value: vehicle.name %>
+              <%= hidden_input f, :vehicle_id, value: vehicle.id %>
+              <%= hidden_input f, :duration, value: 5 %>
+              <%= number_input f, :quantity, value: 1, style: "width: 50px; color: #000;", class: "btn btn-link px-0 h4" %>
+              <%= error_tag f, :quantity %>
+              <%= submit raw('Add to cart <i class="material-icons">shopping_cart</i>'), [class: "btn btn-rose btn-round"] %>
+            <% end %>
+          </div>
+        </div>
       </div>
     </div>
+    <% end %>
   </div>
-  <% end %>
 </div>
+
 
 <% else %>
 There are no vehicles matching your booking dates.
@@ -28,6 +44,6 @@ There are no vehicles matching your booking dates.
 .cover {
  object-fit: cover;
  width: 100%;
- height: 400px; /* optional, but in my case it was good */
+ height: 400px;
 }
 </style>

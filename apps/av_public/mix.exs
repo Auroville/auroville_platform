@@ -43,7 +43,8 @@ defmodule AVPublic.Mixfile do
       {:gettext, "~> 0.11"},
       {:cowboy, "~> 1.0"},
       {:av_data_store, in_umbrella: true},
-      {:oauth2, "~> 0.9"}
+      {:oauth2, "~> 0.9"},
+      {:plug, "~> 1.5"}
     ]
   end
 end
