@@ -62,27 +62,27 @@ defmodule AVDataStore.Sales do
       quantity: String.to_integer(cart_params["quantity"]),
       duration: 5 }
       existing_line_items = existing_line_items |> Enum.map(&Map .from_struct/1)
-      copy_existing_line_items = existing_line_items
 
-      existing_line_items
-       |> Enum.map(fn(x) ->
-         if x.vehicle_id == new_item.vehicle_id do
-           update_line_item(x, %{quantity: x.quantity + new_item.quantity})
-         end
-       end)
-      # |> Enum.map(fn %LineItem{quantity: quantity} = x ->
-      #     cond do
-      #      x.vehicle_id == new_item.vehicle_id ->
-      #        Map.put(LineItem, :quantity, (quantity + new_item.quantity))
-      #      true ->
-      #        x
-      #      end
-      # end)
+      updated_line_items = existing_line_items
+      |> Enum.map(fn x ->
+          cond do
+           x.vehicle_id == new_item.vehicle_id ->
+             Map.put(x, :quantity, (x.quantity + new_item.quantity))
+           true ->
+             x
+           end
+      end)
+       # |> Enum.map(fn(x) ->
+       #   if x.vehicle_id == new_item.vehicle_id do
+       #     update_line_item(x, %{quantity: x.quantity + new_item.quantity})
+       #   end
+       # end)
+
       cond do
-        existing_line_items == copy_existing_line_items ->
+        existing_line_items == updated_line_items ->
           attrs = %{line_items: [new_item | existing_line_items]}
         true ->
-          attrs = %{line_items: [existing_line_items]}
+          attrs = %{line_items: updated_line_items}
       end
       update_cart(cart, attrs)
   end
