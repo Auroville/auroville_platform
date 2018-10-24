@@ -13,7 +13,18 @@
         <h4 class="card-title"><%= vehicle.name %></h4>
         <p class="card-text"><%= vehicle.description %></p>
         <a href="#" class="btn pl-0 pr-0">Check Prices</a>
-        <a href="#" class="float-right btn btn-danger">Add to Cart</a>
+        <!-- <a href="#" class="float-right btn btn-danger">Add to Cart</a> -->
+
+
+        <%= form_for @conn, "/transport/cart", [class: "float-right"], fn f -> %>
+          <%= hidden_input f, :vehicle_name, value: vehicle.name %>
+          <%= hidden_input f, :vehicle_id, value: vehicle.id %>
+          <%= hidden_input f, :duration, value: 5 %>
+          <div class="input-group-addon float-left pt-1 pr-1">Qty</div>
+          <%= number_input f, :quantity, value: 1, style: "width: 50px; height: 38px;" %>
+          <%= error_tag f, :quantity %>
+          <%= submit "Add to cart", [class: "float-right btn btn-danger"] %>
+        <% end %>
       </div>
     </div>
   </div>
