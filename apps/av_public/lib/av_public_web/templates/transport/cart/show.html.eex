@@ -2,7 +2,7 @@
 <%= if Enum.empty?(@cart.line_items) do %>
   <p>Your cart is empty</p>
 <% else %>
-<%= form_for @cart_changeset, "/transport_cart", fn f -> %>
+<%= form_for @cart_changeset, "/transport_cart_path", fn f -> %>
   <table class="table">
     <thead>
       <tr>
@@ -16,6 +16,7 @@
     </thead>
     <tbody>
       <%= inputs_for f, :line_items, fn lf -> %>
+      <!-- <#%= for item <- @cart.line_items do %> -->
         <tr>
           <td><%= lf.data.vehicle_name %></td>
           <td><%= lf.data.duration %></td>

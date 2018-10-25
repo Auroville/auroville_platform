@@ -1,5 +1,6 @@
 defmodule AVDataStore.Sales do
   alias AVDataStore.Repo
+  import Ecto.Changeset
   alias AVDataStore.Sales.{Order, Cart, LineItem}
 
   def get_cart(cart_id) do
@@ -91,12 +92,6 @@ defmodule AVDataStore.Sales do
     cart
     |> Cart.changeset(attrs)
     |> Repo.update
-  end
-
-  def update_line_item(%LineItem{} = line_item, attrs) do
-    line_item
-    |> LineItem.update_quantity(attrs)
-    |> Repo.update()
   end
 
   def change_cart(%Cart{} = cart) do

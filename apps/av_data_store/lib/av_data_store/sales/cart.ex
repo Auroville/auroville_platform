@@ -3,7 +3,6 @@ defmodule AVDataStore.Sales.Cart do
   import Ecto.Changeset
   alias AVDataStore.Sales.{Cart, LineItem}
 
-
   schema "sales_cart" do
     embeds_many :line_items, LineItem, on_replace: :delete
     field :customer_id, :integer
@@ -19,9 +18,9 @@ defmodule AVDataStore.Sales.Cart do
   end
 
   @doc false
-  def changeset(order, attrs) do
-    order
-    |> cast(attrs, [:status, :total])
+  def changeset(cart, attrs) do
+    cart
+    |> cast(attrs, [:status, :total, :subtotal, :tax_cgst, :tax_sgst])
     |> cast_embed(:line_items, required: true, with: &LineItem.changeset/2)
     |> set_order_total
     |> validate_required([:status, :total])

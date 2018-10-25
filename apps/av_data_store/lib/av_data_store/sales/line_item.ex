@@ -22,14 +22,6 @@ defmodule AVDataStore.Sales.LineItem do
     |> validate_required([:vehicle_id, :vehicle_name, :quantity, :unit_price, :duration])
   end
 
-  def update_quantity(%LineItem{} = line_item, attrs) do
-    line_item
-    |> cast(attrs, [:vehicle_id, :vehicle_name, :quantity, :unit_price, :total, :duration])
-    |> set_vehicle_details
-    |> set_total
-    |> validate_required([:quantity])
-  end
-
   defp set_vehicle_details(changeset) do
     case get_change(changeset, :vehicle_id) do
       nil -> changeset
