@@ -99,4 +99,8 @@ defmodule AVDataStore.Sales do
     |> Repo.update()
   end
 
+  def change_cart(%Cart{} = cart) do
+    Cart.changeset(cart, %{})
+  end
+
 end

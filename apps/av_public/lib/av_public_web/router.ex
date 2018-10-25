@@ -26,6 +26,7 @@ defmodule AVPublicWeb.Router do
       get "/", SearchController, :index
       get "/cart", CartController, :show
       post "/cart", CartController, :add
+      put "/cart", CartController, :update
     end
 
   end
