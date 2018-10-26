@@ -73,11 +73,6 @@ defmodule AVDataStore.Sales do
              x
            end
       end)
-       # |> Enum.map(fn(x) ->
-       #   if x.vehicle_id == new_item.vehicle_id do
-       #     update_line_item(x, %{quantity: x.quantity + new_item.quantity})
-       #   end
-       # end)
 
       cond do
         existing_line_items == updated_line_items ->
