@@ -1,6 +1,6 @@
 defmodule AVPublic.Transport.VehicleControllerTest do
   use AVPublicWeb.ConnCase
-  import AVPublic.Factory
+  import AVDataStore.Factory
 
   describe "search page" do
     test "display search form with to and from dates", %{conn: conn} do
@@ -9,7 +9,7 @@ defmodule AVPublic.Transport.VehicleControllerTest do
     end
 
     test "display search results for the chosen dates", %{conn: conn} do
-      [cycle1, cycle2] = insert_list(2, :transport_cycle)
+      [cycle1, cycle2] = insert_list(2, :transport_vehicle)
 
       params = %{
         "from_date" => "",

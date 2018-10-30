@@ -18,7 +18,6 @@ defmodule AVDataStore.Repo.Migrations.CreateOrders do
       add :id_value, :string
       add :contact_number, :string
       add :user_status, :string
-      add :customer_id, :integer
 
       timestamps()
     end

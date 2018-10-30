@@ -5,7 +5,6 @@ defmodule AVDataStore.Sales.Cart do
 
   schema "sales_cart" do
     embeds_many :line_items, LineItem, on_replace: :delete
-    field :customer_id, :integer
     field :status, :string
     field :from_date, :date
     field :to_date, :date
@@ -21,7 +20,7 @@ defmodule AVDataStore.Sales.Cart do
   def changeset(cart, attrs) do
     cart
     |> cast(attrs, [:status, :total, :subtotal, :tax_cgst, :tax_sgst])
-    |> cast_embed(:line_items, required: true, with: &LineItem.changeset/2)
+    |> cast_embed(:line_items, with: &LineItem.changeset/2)
     |> set_order_total
     |> validate_required([:status, :total])
   end

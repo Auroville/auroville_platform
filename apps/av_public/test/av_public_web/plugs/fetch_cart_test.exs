@@ -1,6 +1,6 @@
 defmodule AVPublic.Plugs.FetchCartTest do
   use AVPublicWeb.ConnCase
-  alias AVDataStore.Sales.Order
+  alias AVDataStore.Sales.Cart
 
   test "create and test cart on first visit" do
     conn = get build_conn(), "/"

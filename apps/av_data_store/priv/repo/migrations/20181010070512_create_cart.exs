@@ -11,7 +11,6 @@ defmodule AVDataStore.Repo.Migrations.CreateCart do
       add :tax_cgst, :decimal
       add :tax_sgst, :decimal
       add :total, :decimal
-      add :customer_id, :integer
 
       timestamps()
     end
